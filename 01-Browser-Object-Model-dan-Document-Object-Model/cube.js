@@ -17,3 +17,16 @@ kita bisa memanggilnya dengan indeks 0.
 const playButtonElement = playButton.children[0];
 // Di sini kita akan mengubah type dari tombol yang ber-caption "Play (Coming Soon)" menjadi disabled.
 playButtonElement.setAttribute("disabled", true);
+
+// ## Memanipulasi Konten melalui innerText, innerHTML, dan style.property
+const dicoding = document.getElementById("dicodingLink");
+dicoding.innerText = "Belajar Front-End Web"; // innerText hanya mengambil teks tanpa tag-tag HTML yang ada.
+
+const google = document.getElementById("googleLink");
+google.innerHTML = "Google Student Ambasador"; // innerHTML mengambil semua konten dalam sebuah elemen beserta tag-tag HTML yang ada
+
+for (const button of buttons) {
+  const buttonElement = button.children[0];
+
+  buttonElement.style.borderRadius = "6px";
+}

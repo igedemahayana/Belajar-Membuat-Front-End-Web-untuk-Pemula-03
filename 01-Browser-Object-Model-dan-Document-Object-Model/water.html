@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Memasak Air</title>
+</head>
+
+<body>
+  <p id="name">Langkah-langkah memasak air</p>
+  <ol id="daftar">
+    <li id="awal">Masukkan air ke dalam wadah.</li>
+    <li id="akhir">Matikan kompor.</li>
+  </ol>
+  <hr size="2" width="95%" color="black">
+</body>
+
+<script>
+  // 1. menambahkan element dengan appendChild
+  const newElement1 = document.createElement("li");
+  newElement1.innerText = "Air sudah mendidih";
+  const newElement2 = document.createElement("li");
+  newElement2.innerText = "Selamat Menikmati"
+
+  // mengambil id daftar dari tag ol
+  const daftar = document.getElementById("daftar");
+  daftar.appendChild(newElement1); // Air sudah mendidih
+  daftar.appendChild(newElement2); // Selamat Menikmati
+
+  // 2. Menambahkan Elemen dengan insertBefore()
+  // element ada di awal
+  const elementAwal = document.createElement("li");
+  elementAwal.innerText = "Hidupkan Kompor";
+
+  const itemAwal = document.getElementById("awal");
+  daftar.insertBefore(elementAwal, itemAwal);
+</script>
+
+</html>

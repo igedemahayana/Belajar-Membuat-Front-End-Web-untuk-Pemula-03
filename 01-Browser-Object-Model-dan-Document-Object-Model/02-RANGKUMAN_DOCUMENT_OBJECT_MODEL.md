@@ -135,3 +135,118 @@ const imageCube = document.getElementById("gambar");
 imageCube.setAttribute("width", 300);
 imageCube.setAttribute("height", 215);
 ```
+
+## Memanipulasi Konten melalui innerText, innerHTML, dan style.property
+
+Ada satu kemampuan JavaScript yang tidak kalah hebat, yakni memanipulasi konten atau isi elemen itu sendiri. Terdapat beberapa cara untuk memanipulasi konten elemen seperti innerText, innerHTML dan style.property.
+
+### Perbedaan innerText dan innerHTML
+
+Lalu, apa perbedaannya? Perbedaannya adalah innerHTML mengambil semua konten dalam sebuah elemen beserta tag-tag HTML yang ada, sedangkan innerText hanya mengambil teks tanpa tag-tag HTML yang ada.
+
+```JavaScript
+// ## Memanipulasi Konten melalui innerText, innerHTML, dan style.property
+const dicoding = document.getElementById("dicodingLink");
+dicoding.innerText = "Belajar Front-End Web"; // innerText hanya mengambil teks tanpa tag-tag HTML yang ada.
+
+const google = document.getElementById("googleLink");
+google.innerHTML = "Google Student Ambasador"; // innerHTML mengambil semua konten dalam sebuah elemen beserta tag-tag HTML yang ada
+
+// memanipulasi konten dengan style.property
+for (const button of buttons) {
+  const buttonElement = button.children[0];
+
+  buttonElement.style.borderRadius = "6px";
+}
+```
+
+## Menambahkan Element HTML ke DOM
+
+Sebelumnya, kita sudah belajar bagaimana cara membuat konten HTML dan memanipulasi konten HTML sehingga dapat berubah "bentuk". Namun, bagaimana jika kita ingin menambahkan elemen HTML yang benar-benar baru? Pada materi ini kita akan mempelajarinya melalui 2 method yakni appendChild() dan insertBefore().
+
+### 1. Menambahkan Elemen dengan appendChild()
+
+Apa fungsi dari method appendChild? Fungsinya adalah menambahkan atau menyisipkan sebuah child elemen ke bagian akhir dari sebuah elemen.
+
+Pada berkas HTML di atas, kita ingin menambahkan langkah baru yakni sebuah pesan berisi "Selamat menikmati!". Rasanya kurang lengkap jika suatu resep tidak diakhiri dengan pesan tersebut.
+
+Sebelum kita memanggil elemen ol, bagaimana jika kita membuat sebuah elemen baru terlebih dahulu dengan method createElement(). Elemen yang ingin kita buat adalah elemen li karena ingin menambahkan item ke dalam ordered list.
+
+```JavaScript
+const newElement1 = document.createElement("li");
+```
+
+Berikutnya, kita masukkan konten teks "Selamat menikmati!" ke dalam elemen li tersebut melalui atribut innerText, karena kita hanya ingin memasukkan teks saja tanpa tambahan tag lainnya.
+
+```JavaScript
+newElement1.innerText = 'Selamat menikmati!';
+```
+
+Langkah ketiga adalah mendapatkan parent elemen yakni elemen ol.
+
+```JavaScript
+const daftar = document.getElementById('daftar');
+```
+
+Oke, sejauh ini belum ada perubahan sama sekali di layout HMTL kita. Tenang saja, semua itu akan berubah ketika menggunakan method appendChild() pada variabel daftar.
+
+```JavaScript
+daftar.appendChild(newElement1);
+```
+
+Full Kode cara menggunakan appendChild
+
+```JavaScript
+  // 1. menambahkan element dengan appendChild
+  const newElement1 = document.createElement("li");
+  newElement1.innerText = "Air sudah mendidih";
+  const newElement2 = document.createElement("li");
+  newElement2.innerText = "Selamat Menikmati"
+
+  // mengambil id daftar dari tag ol
+  const daftar = document.getElementById("daftar");
+  daftar.appendChild(newElement1); // Air sudah mendidih
+  daftar.appendChild(newElement2); // Selamat Menikmati
+```
+
+### 2. Menambahkan Elemen dengan insertBefore()
+
+Tidak seperti method sebelumnya, method insertBefore() memberikan kemampuan untuk menyisipkan elemen sebelum child elemen tertentu dalam parent element. Method ini menerima dua buah parameter, yaitu (1) elemen baru yang ingin disisipkan dan (2) child element yang akan dijadikan patokan diletakkannya elemen baru. Berkas HTML yang telah kita modifikasi sebelumnya menggunakan method appendChild() memiliki tampilan berikut.
+
+Pertama, kita perlu membuat elemen baru dengan createElement(). Elemen yang ingin kita buat adalah tag li
+
+```JavaScript
+const elementAwal = document.createElement("li");
+```
+
+Selanjutnya tuliskan pesan "Hidupkan kompor." ke dalam elemen li melalui atribut innerText karena kita hanya ingin memasukkan teks saja tanpa tambahan tag lainnya.
+
+```JavaScript
+elementAwal.innerText = 'Hidupkan kompor';
+```
+
+Langkah ketiga adalah mendapatkan parent elemen dari semua elemen li yakni ol. Namun, kita sudah mendeklarasi dan menginisialisasi variabel daftar pada praktik method appendChild(), maka kita tidak perlu melakukannya lagi.
+
+Pada elemen ol, kita melihat bahwa child element pertama memiliki atribut id dengan nilai "awal". Untuk menyisipkan elemen baru pada posisi awal, kita perlu mengangkat elemen yang memiliki atribut id dengan value "awal".
+
+```JavaScript
+const itemAwal = document.getElementById('awal');
+```
+
+Langkah terakhir adalah memanggil method insertBefore pada variabel daftar. Method tersebut akan dipanggil melalui parent element. Parameter pertama pada method tersebut diisi dengan elemen baru yang ingin ditambah berdasarkan elemen yang sudah ditentukan di parameter kedua.
+
+```JavaScript
+daftar.insertBefore(elementAwal, itemAwal);
+```
+
+Full kode cara menggunaka insertBefore
+
+```JavaScript
+  // 2. Menambahkan Elemen dengan insertBefore()
+  // element ada di awal
+  const elementAwal = document.createElement("li");
+  elementAwal.innerText = "Hidupkan Kompor";
+
+  const itemAwal = document.getElementById("awal");
+  daftar.insertBefore(elementAwal, itemAwal);
+```
