@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+  <!-- 1. Tombol Reaksi Sederhana -->
+  <div class="m-4">
+    <button id="btn-sapa" class="bg-blue-500 px-4 py-3 rounded-lg text-white">Sapa Saya</button>
+    <p id="pesan-sapa"></p>
+  </div>
+
+  <div class="m-4">
+    <input type="text" id="input-text" placeholder="Ketik sesuatu...">
+    <p>Karakter diketik: <span id="preview-text"></span></p>
+
+    <h1>Kotak Hover Versi Styling CSS</h1>
+    <div id="boxCSS" class="w-25 h-25 bg-gray-200"></div>
+
+    <h1>Kotak Hover Versi Styling Tailwind CSS</h1>
+    <div id="boxTailwind" class="w-25 h-25 bg-sky-500"></div>
+  </div>
+</body>
+<script src="Event.js"></script>
+
+
+</html>
